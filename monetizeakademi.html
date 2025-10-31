@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monetize Akademi - Dijital İmparatorluğunu Kur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #111111;
+            --gold: #FFD700;
+            --orange: #FF8C00;
+            --white: #FFFFFF;
+            --light-gray: #E0E0E0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--black);
+            color: var(--light-gray);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header Section */
+        .header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 3rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--orange), #ff6b00);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 140, 0, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(255, 140, 0, 0.4);
+            }
+            50% {
+                box-shadow: 0 10px 40px rgba(255, 140, 0, 0.7);
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .section-content {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .section-text {
+            font-size: 1.2rem;
+            color: var(--light-gray);
+            text-align: center;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        /* Why Section */
+        .why-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #111111 100%);
+        }
+
+        .story-box {
+            background: rgba(255, 215, 0, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            margin-top: 2rem;
+        }
+
+        /* Questions Section */
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .question-card {
+            background: rgba(255, 140, 0, 0.05);
+            padding: 2.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--orange);
+            transition: all 0.3s ease;
+        }
+
+        .question-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 140, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
+        }
+
+        .question-card h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 215, 0, 0.03);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            background: rgba(255, 215, 0, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-title {
+            color: var(--gold);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* Emotional Section */
+        .emotional-section {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #111111 100%);
+        }
+
+        .success-story {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 140, 0, 0.1) 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--white);
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #111111 100%);
+            text-align: center;
+        }
+
+        .final-cta {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 140, 0, 0.1) 100%);
+            padding: 4rem;
+            border-radius: 20px;
+            margin-top: 3rem;
+            border: 3px solid var(--gold);
+        }
+
+        .final-cta h2 {
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0a0a;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 2px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .footer-text {
+            color: var(--light-gray);
+            font-size: 1rem;
+        }
+
+        .footer-link {
+            color: var(--gold);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--orange);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-text {
+                font-size: 1rem;
+            }
+
+            .questions-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid var(--gold);
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
+        }
+
+        @keyframes scroll {
+            0% {
+                opacity: 0;
+                top: 10px;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <section class="header">
+        <div class="header-content">
+            <h1 class="logo" data-aos="fade-down">Monetize Akademi</h1>
+            <p class="tagline" data-aos="fade-up" data-aos-delay="200">
+                Sen sadece bir içerik üretici değil, kendi dijital imparatorluğunu kurabilirsin.
+            </p>
+            <a href="https://t.me/monetizeakademi" class="cta-button" data-aos="zoom-in" data-aos-delay="400">Hemen Başla</a>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- Why Section -->
+    <section class="section why-section">
+        <div class="section-content" data-aos="fade-up">
+            <h2 class="section-title">Neden Bu Sistemi Oluşturduk?</h2>
+            <p class="section-text">
+                Yıllarca denemeler yaptım. Her seferinde bir yerlerde takıldım. Sonuç alamadan pes etmek zorunda kaldım. 
+                İşte tam da bu yüzden, gerçekten sonuç veren, kanıtlanmış bir sistem oluşturdum.
+            </p>
+            <div class="story-box" data-aos="fade-up" data-aos-delay="200">
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Bu sistem, yalnızca teorik bilgilerle dolu değil. Aksine, gerçek deneyimlerden, başarısızlıklardan 
+                    ve sonunda elde edilen başarılardan doğdu. Artık senin de bu yolculukta yanındayım.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Questions Section -->
+    <section class="section">
+        <div class="section-content" data-aos="fade-up">
+            <h2 class="section-title">Kendine Sor</h2>
+            <p class="section-text">
+                Başarıya ulaşmadan önce, kendine bu soruları sormalısın...
+            </p>
+            <div class="questions-grid">
+                <div class="question-card" data-aos="fade-right" data-aos-delay="100">
+                    <h3>⏰ Ne zamandır bu hedefe ulaşmak istiyorsun?</h3>
+                    <p>Belki aylardır, belki yıllardır. Artık sonuç almanın zamanı geldi.</p>
+                </div>
+                <div class="question-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>🔄 Daha önce neler denedin?</h3>
+                    <p>Kaç kurs aldın? Kaç yöntem denedin? Neden sonuç alamadın?</p>
+                </div>
+                <div class="question-card" data-aos="fade-left" data-aos-delay="300">
+                    <h3>💰 Bu hedef için yatırım yaptın mı?</h3>
+                    <p>Zamanını, enerjini ve paranı harcadın ama karşılığını alamadın mı?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section solution-section">
+        <div class="section-content" data-aos="fade-up">
+            <h2 class="section-title">Çözüm Burada</h2>
+            <p class="section-text">
+                Bu sistem, yaşadığın sorunları doğrudan çözer. Sana sadece bilgi değil, uygulanabilir adımlar sunar.
+            </p>
+            <div class="benefits-grid">
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 class="benefit-title">Net Strateji</h3>
+                    <p>Adım adım, net ve anlaşılır yol haritası</p>
+                </div>
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="benefit-icon">💡</div>
+                    <h3 class="benefit-title">Gerçek Teknikler</h3>
+                    <p>Deneyimlerle test edilmiş, sonuç veren yöntemler</p>
+                </div>
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="benefit-icon">🚀</div>
+                    <h3 class="benefit-title">Hızlı Uygulama</h3>
+                    <p>Öğrendiğin an hemen uygulayabileceğin araçlar</p>
+                </div>
+                <div class="benefit-item" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="benefit-icon">📈</div>
+                    <h3 class="benefit-title">Ölçülebilir Sonuçlar</h3>
+                    <p>Her adımda ilerlediğini görebileceğin metrikler</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emotional Section -->
+    <section class="section emotional-section">
+        <div class="section-content" data-aos="fade-up">
+            <h2 class="section-title">Senin Hikayenin Başlangıcı</h2>
+            <p class="section-text">
+                Ben de senin gibi başladım. Belirsizlik, başarısızlık ve hayal kırıklığı dolu günler geçirdim.
+            </p>
+            <div class="success-story" data-aos="fade-up" data-aos-delay="200">
+                <p class="quote">
+                    "Bugün artık fark edilen ve kazanan bir içerik üreticiyim. Kendi kurallarımla oynuyorum. 
+                    Sistem benim için çalışıyor, ben sistem için değil. Ve şimdi bu yolu seninle paylaşmak istiyorum."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="section-content" data-aos="fade-up">
+            <h2 class="section-title">Kimin İçin?</h2>
+            <p class="section-text">
+                Bu sistem, kendi emeğiyle kazanan, özgür ve bağımsız bir içerik üreticiye dönüşmek isteyen herkes için.
+            </p>
+            <div class="final-cta" data-aos="zoom-in" data-aos-delay="200">
+                <h2>Dijital İmparatorluğunu Kurmaya Hazır mısın?</h2>
+                <p style="font-size: 1.2rem; color: var(--light-gray); margin-bottom: 2rem;">
+                    Telegram kanalımıza katıl ve bu yolculuğa hemen başla.
+                </p>
+                <a href="https://t.me/monetizeakademi" class="cta-button">Telegram Kanalımıza Katıl</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">
+            © 2025 Monetize Akademi | 
+            <a href="https://t.me/monetizeakademi" class="footer-link">Telegram Kanalımız</a>
+        </p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.header');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
